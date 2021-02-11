@@ -24,11 +24,3 @@ class Routes {
   static const String SPLASH = "_splash";
   static const String USERS = "_users";
 }
-
-class HttpServer {
-  static const String BASE_URL = "https://reqres.in/";
-
-  static const String LOGIN = "api/login";
-  static const String REGISTER = "api/register";
-  static const String USERS = "api/users?page=";
-}

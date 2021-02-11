@@ -1,10 +1,9 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/data/login.dart';
-import 'package:flutter_basic/local/shared_pref.dart';
+import 'package:flutter_basic/local/helper.dart';
+import 'package:flutter_basic/network/helper.dart';
 import 'package:flutter_basic/utils/constants.dart';
 import 'package:flutter_basic/utils/widgets.dart';
-import 'package:http/http.dart' as http;
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -98,7 +97,9 @@ class LoginState extends State<LoginScreen> {
       isLoading = true;
     });
 
-    login(email, password);
+    HttpRepository()
+        .login(email, password)
+        .then((value) => onLoginResponse(value));
   }
 
   void onRegisterButtonClick() {
@@ -113,24 +114,12 @@ class LoginState extends State<LoginScreen> {
     Navigator.pop(context);
   }
 
-  Future<LoginResponse> login(String email, String password) async {
-    final response = await http.post(HttpServer.BASE_URL + HttpServer.LOGIN,
-        body: Login(email: email, password: password).toJson());
-
+  void onLoginResponse(LoginResponse loginResponse) {
     setState(() {
       isLoading = false;
     });
 
-    if (response.statusCode == 200) {
-      LoginResponse loginResponse =
-          LoginResponse.fromJson(jsonDecode(response.body));
-      String authToken = loginResponse.token;
-      SharedPrefHelper().setAuthToken(authToken);
-
-      Navigator.of(context).pushNamed(Routes.USERS);
-
-      return loginResponse;
-    } else {
+    if (loginResponse == null) {
       showDialog(
           context: context,
           child: CommonAppWidgets.makeCommonAlertDialog(
@@ -140,8 +129,11 @@ class LoginState extends State<LoginScreen> {
                   Colors.lightBlueAccent, Colors.white, onDialogCancelClick),
               CommonAppWidgets.makeCommonButton(AppStrings.DIALOG_OK,
                   Colors.lightBlueAccent, Colors.white, onDialogOKClick)));
-
-      throw Exception('Failed to load data');
+      return;
     }
+
+    String authToken = loginResponse.token;
+    SharedPrefHelper().setAuthToken(authToken);
+    Navigator.of(context).pushNamed(Routes.USERS);
   }
 }

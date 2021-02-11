@@ -1,8 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_basic/local/shared_pref.dart';
+import 'package:flutter_basic/local/helper.dart';
 import 'package:flutter_basic/utils/constants.dart';
 
 class SplashScreen extends StatefulWidget {

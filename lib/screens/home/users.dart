@@ -1,10 +1,9 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/data/user.dart';
+import 'package:flutter_basic/network/helper.dart';
 import 'package:flutter_basic/utils/constants.dart';
 import 'package:flutter_basic/utils/widgets.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:http/http.dart' as http;
 
 class UsersScreen extends StatefulWidget {
   @override
@@ -18,18 +17,7 @@ class UsersState extends State<UsersScreen> {
   @override
   void initState() {
     super.initState();
-    futureUsers = fetchUsers(1);
-  }
-
-  Future<UsersResponse> fetchUsers(int page) async {
-    final response =
-        await http.get('${HttpServer.BASE_URL}${HttpServer.USERS}$page');
-
-    if (response.statusCode == 200) {
-      return UsersResponse.fromJson(jsonDecode(response.body));
-    } else {
-      throw Exception('Failed to load data');
-    }
+    futureUsers = HttpRepository().fetchUsers(1);
   }
 
   void paginationController(
@@ -38,7 +26,7 @@ class UsersState extends State<UsersScreen> {
     if (lastIndex >= users.length) {
       int nextPage = currentPage + 1;
       if (nextPage <= totalPages) {
-        futureUsers = fetchUsers(nextPage);
+        futureUsers = HttpRepository().fetchUsers(nextPage);
       }
     }
   }
