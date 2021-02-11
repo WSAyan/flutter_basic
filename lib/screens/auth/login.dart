@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'package:flutter_basic/local/shared_pref.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/data/auth/login.dart';
 import 'package:flutter_basic/utils/constants.dart';
 import 'package:flutter_basic/utils/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -121,14 +123,13 @@ class LoginState extends State<LoginScreen> {
     });
 
     if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      debugPrint(
-          'response: ${(LoginResponse.fromJson(jsonDecode(response.body))).token}');
+      LoginResponse loginResponse =
+          LoginResponse.fromJson(jsonDecode(response.body));
+      String authToken = loginResponse.token;
+      SharedPrefHelper().setAuthToken(authToken);
 
-      return LoginResponse.fromJson(jsonDecode(response.body));
+      return loginResponse;
     } else {
-
       showDialog(
           context: context,
           child: CommonAppWidgets.makeCommonAlertDialog(
