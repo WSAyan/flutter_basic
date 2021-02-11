@@ -8,7 +8,8 @@ class CommonAppWidgets {
           Icon prefixIcon,
           Icon suffixIcon,
           String initialValue,
-          String hint, TextEditingController textEditingController) =>
+          String hint,
+          TextEditingController textEditingController) =>
       TextFormField(
         keyboardType: textInputType,
         autofocus: autoFocus,
@@ -32,5 +33,20 @@ class CommonAppWidgets {
         onPressed: onPressed,
         color: backGroundColor,
         child: Text(text, style: TextStyle(color: textColor)),
+      );
+
+  static Container makeCommonLoader() => Container(
+      color: Colors.transparent,
+      child: Center(
+          child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation(Colors.blue),
+              strokeWidth: 5.0)));
+
+  static AlertDialog makeCommonAlertDialog(String title, String content,
+          RaisedButton okButton, RaisedButton cancelButton) =>
+      AlertDialog(
+        title: new Text(title),
+        content: new Text(content),
+        actions: [cancelButton, okButton],
       );
 }

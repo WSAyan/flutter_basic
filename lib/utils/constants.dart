@@ -8,6 +8,13 @@ class AppStrings {
 
   static const String EMAIL_HINT = "Email";
   static const String PASSWORD_HINT = "Password";
+
+  static const String DIALOG_OK = "OK";
+  static const String DIALOG_CANCEL = "Cancel";
+  static const String DIALOG_TITLE_ERROR = "ERROR";
+  static const String DIALOG_TITLE_SUCCESS = "SUCCESS";
+
+  static const String COMMON_ERROR_MESSAGE = "Something went wrong! Please try again.";
 }
 
 class Routes {
