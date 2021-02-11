@@ -49,4 +49,17 @@ class CommonAppWidgets {
         content: new Text(content),
         actions: [cancelButton, okButton],
       );
+
+  static ListTile makeCommonListRow(
+      String title, String subtitle, String imageUri) {
+    return ListTile(
+      leading: ClipOval(child: Image.network(imageUri, height: 50, width: 50)),
+      title: Text(
+        title,
+        style: TextStyle(fontSize: 18.0),
+      ),
+      subtitle: Text(subtitle),
+      trailing: Icon(Icons.navigate_next),
+    );
+  }
 }

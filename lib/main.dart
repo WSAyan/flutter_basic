@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/screens/auth/register.dart';
+import 'package:flutter_basic/screens/home/users.dart';
 import 'package:flutter_basic/utils/constants.dart';
 import 'screens/auth/login.dart';
 import 'screens/splash.dart';
@@ -21,6 +22,7 @@ class BasicApp extends StatelessWidget {
         Routes.SPLASH: (context) => SplashScreen(),
         Routes.LOGIN: (context) => LoginScreen(),
         Routes.REGISTER: (context) => RegisterScreen(),
+        Routes.USERS: (context) => UsersScreen(),
       },
     );
   }

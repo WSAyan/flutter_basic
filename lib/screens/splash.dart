@@ -14,9 +14,6 @@ class SplashState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    /*Timer(Duration(seconds: 5),
-            () => Navigator.of(context).pushNamed("/login")
-    );*/
 
     SchedulerBinding.instance.addPostFrameCallback((_) {
       Navigator.of(context).pushNamed(Routes.LOGIN);
