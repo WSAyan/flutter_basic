@@ -141,7 +141,7 @@ class LoginState extends State<LoginScreen> {
               CommonAppWidgets.makeCommonButton(AppStrings.DIALOG_OK,
                   Colors.lightBlueAccent, Colors.white, onDialogOKClick)));
 
-      throw Exception('Failed to load album');
+      throw Exception('Failed to load data');
     }
   }
 }

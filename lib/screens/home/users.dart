@@ -28,7 +28,7 @@ class UsersState extends State<UsersScreen> {
     if (response.statusCode == 200) {
       return UsersResponse.fromJson(jsonDecode(response.body));
     } else {
-      throw Exception('Failed to load album');
+      throw Exception('Failed to load data');
     }
   }
 
@@ -44,7 +44,7 @@ class UsersState extends State<UsersScreen> {
   }
 
   Widget buildUsersList() {
-    paginationController(7, 1, 6); // hard coded
+    //paginationController(7, 1, 6); // hard coded
 
     return FutureBuilder<UsersResponse>(
         future: futureUsers,
