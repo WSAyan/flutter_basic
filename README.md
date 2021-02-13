@@ -1,8 +1,18 @@
 # flutter_basic
 
-A new Flutter application.
+A flutter apllication with basic crud operations. 
 
 ## Getting Started
 
-Api suport: https://reqres.in/
+Log in:
+
+**email:** eve.holt@reqres.in
+
+**password:** cityslicka
+
+
+
+## Acknowledgements
+
+Api support: https://reqres.in/
 
