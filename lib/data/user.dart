@@ -1,4 +1,6 @@
-class UsersResponse {
+import 'package:flutter_basic/data/base.dart';
+
+class UsersResponse extends BaseResponse {
   int page;
   int perPage;
   int total;

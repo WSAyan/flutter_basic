@@ -1,3 +1,5 @@
+import 'package:flutter_basic/data/base.dart';
+
 class Login {
   String email;
   String password;
@@ -17,7 +19,7 @@ class Login {
   }
 }
 
-class LoginResponse {
+class LoginResponse extends BaseResponse {
   String token;
 
   LoginResponse({this.token});
