@@ -7,6 +7,7 @@ class AppStrings {
   static const String LOGIN_BUTTON = "Log In";
   static const String REGISTER_BUTTON = "Register";
 
+  static const String NAME_HINT = "Name";
   static const String EMAIL_HINT = "Email";
   static const String PASSWORD_HINT = "Password";
 
@@ -15,7 +16,10 @@ class AppStrings {
   static const String DIALOG_TITLE_ERROR = "ERROR";
   static const String DIALOG_TITLE_SUCCESS = "SUCCESS";
 
-  static const String COMMON_ERROR_MESSAGE = "Something went wrong! Please try again.";
+  static const String COMMON_ERROR_MESSAGE =
+      "Something went wrong! Please try again.";
+
+  static const String REGISTER_SUCCESSFUL = "Registration successful";
 }
 
 class Routes {

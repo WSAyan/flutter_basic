@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_basic/data/login.dart';
+import 'package:flutter_basic/data/register.dart';
 import 'package:flutter_basic/data/user.dart';
 import 'package:http/http.dart' as http;
 
@@ -30,6 +31,20 @@ class HttpRepository {
       return UsersResponse.fromJson(jsonDecode(response.body));
     } else {
       throw Exception('Failed to load data');
+    }
+  }
+
+  Future<RegisterResponse> register(String email, String password) async {
+    final response = await http.post("$BASE_URL$LOGIN",
+        body: Register(email: email, password: password).toJson());
+
+    if (response.statusCode == 200) {
+      RegisterResponse registerResponse =
+          RegisterResponse.fromJson(jsonDecode(response.body));
+
+      return registerResponse;
+    } else {
+      return null;
     }
   }
 }
