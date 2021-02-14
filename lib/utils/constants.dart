@@ -20,6 +20,11 @@ class AppStrings {
       "Something went wrong! Please try again.";
 
   static const String REGISTER_SUCCESSFUL = "Registration successful";
+
+  static const String DIALOG_TITLE_ADD_PHOTO = "Add photo";
+  static const String DIALOG_SUB_TITLE_ADD_PHOTO = "Please take a photo or pick one from gallery.";
+  static const String OPEN_GALLERY = "Open gallery";
+  static const String TAKE_PHOTO = "Take photo";
 }
 
 class Routes {

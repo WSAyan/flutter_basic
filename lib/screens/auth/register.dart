@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/data/register.dart';
 import 'package:flutter_basic/network/helper.dart';
 import 'package:flutter_basic/utils/constants.dart';
+import 'package:flutter_basic/utils/image_utils.dart';
 import 'package:flutter_basic/utils/widgets.dart';
+import 'package:image_picker/image_picker.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -15,6 +19,7 @@ class RegisterState extends State<RegisterScreen> {
   bool isLoading = false;
   Column mainColumn;
   Container progressLoader;
+  File selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +66,18 @@ class RegisterState extends State<RegisterScreen> {
       children: [
         SizedBox(
           height: 10,
+        ),
+        GestureDetector(
+          child: selectedImage == null
+              ? Icon(Icons.add_a_photo, size: 100)
+              : ClipOval(
+                  child: Image.file(selectedImage,
+                      height: 100, width: 100, fit: BoxFit.cover),
+                ),
+          onTap: onAddPhotoClick,
+        ),
+        SizedBox(
+          height: 20,
         ),
         nameTextField,
         SizedBox(
@@ -120,7 +137,7 @@ class RegisterState extends State<RegisterScreen> {
       return;
     }
 
-    CommonAppWidgets.showCommonToast("Registration successful");
+    CommonAppWidgets.showCommonToast(AppStrings.REGISTER_SUCCESSFUL);
 
     Navigator.of(context).pushNamed(Routes.LOGIN);
   }
@@ -130,6 +147,34 @@ class RegisterState extends State<RegisterScreen> {
   }
 
   void onDialogCancelClick() {
+    Navigator.pop(context);
+  }
+
+  void onAddPhotoClick() {
+    showDialog(
+        context: context,
+        child: CommonAppWidgets.makeCommonAlertDialog(
+            AppStrings.DIALOG_TITLE_ADD_PHOTO,
+            AppStrings.DIALOG_SUB_TITLE_ADD_PHOTO,
+            CommonAppWidgets.makeCommonButton(AppStrings.OPEN_GALLERY,
+                Colors.lightBlueAccent, Colors.white, onOpenGalleryClick),
+            CommonAppWidgets.makeCommonButton(AppStrings.TAKE_PHOTO,
+                Colors.lightBlueAccent, Colors.white, onTakePhotoClick)));
+  }
+
+  void onOpenGalleryClick() {
+    PickerHelper().getFromGallery().then((value) => setState(() {
+          selectedImage = value;
+        }));
+
+    Navigator.pop(context);
+  }
+
+  void onTakePhotoClick() {
+    PickerHelper().getFromCamera().then((value) => setState(() {
+          selectedImage = value;
+        }));
+
     Navigator.pop(context);
   }
 }
