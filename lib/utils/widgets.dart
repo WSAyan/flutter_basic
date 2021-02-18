@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basic/data/user.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class CommonAppWidgets {
@@ -51,8 +52,8 @@ class CommonAppWidgets {
         actions: [cancelButton, okButton],
       );
 
-  static ListTile makeCommonListRow(
-      String title, String subtitle, String imageUri) {
+  static ListTile makeCommonListRow(String title, String subtitle,
+      String imageUri, Object selected, Function(Object object) onTaped) {
     return ListTile(
       leading: ClipOval(child: Image.network(imageUri, height: 50, width: 50)),
       title: Text(
@@ -61,6 +62,9 @@ class CommonAppWidgets {
       ),
       subtitle: Text(subtitle),
       trailing: Icon(Icons.navigate_next),
+      onTap: () {
+        onTaped(selected);
+      },
     );
   }
 

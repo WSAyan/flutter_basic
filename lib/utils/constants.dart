@@ -3,6 +3,7 @@ class AppStrings {
   static const String REGISTER_SCREEN_TITLE = "Register";
   static const String LOGIN_SCREEN_TITLE = "Login";
   static const String USERS_SCREEN_TITLE = "Users";
+  static const String USER_SCREEN_TITLE = "Profile";
 
   static const String LOGIN_BUTTON = "Log In";
   static const String REGISTER_BUTTON = "Register";
@@ -32,4 +33,5 @@ class Routes {
   static const String REGISTER = "_register";
   static const String SPLASH = "_splash";
   static const String USERS = "_users";
+  static const String USER = "_user";
 }

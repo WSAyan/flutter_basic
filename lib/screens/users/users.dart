@@ -31,6 +31,15 @@ class UsersState extends State<UsersScreen> {
     }
   }
 
+  void onListItemClick(Object data) {
+    User user = data as User;
+    Navigator.pushNamed(
+      context,
+      Routes.USER,
+      arguments: user,
+    );
+  }
+
   Widget buildUsersList() {
     //paginationController(7, 1, 6); // hard coded
 
@@ -38,17 +47,20 @@ class UsersState extends State<UsersScreen> {
         future: futureUsers,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            users.clear();
             users.addAll(snapshot.data.data);
 
             return ScrollablePositionedList.builder(
                 itemCount: users.length,
                 itemBuilder: (BuildContext context, int index) {
-                  User user = users[index];
+                  User selectedUser = users[index];
 
                   ListTile listTile = CommonAppWidgets.makeCommonListRow(
-                      user.email,
-                      "${user.firstName} ${user.lastName}",
-                      user.avatar);
+                      selectedUser.email,
+                      "${selectedUser.firstName} ${selectedUser.lastName}",
+                      selectedUser.avatar,
+                      selectedUser,
+                      onListItemClick);
 
                   return listTile;
                 });

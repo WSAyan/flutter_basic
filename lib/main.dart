@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/screens/auth/register.dart';
-import 'package:flutter_basic/screens/home/users.dart';
+import 'package:flutter_basic/screens/users/user.dart';
+import 'package:flutter_basic/screens/users/users.dart';
 import 'package:flutter_basic/utils/constants.dart';
+import 'package:flutter_basic/utils/routes.dart';
+import 'data/user.dart';
 import 'screens/auth/login.dart';
 import 'screens/splash.dart';
 
@@ -18,11 +21,9 @@ class BasicApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: Routes.SPLASH,
-      routes: {
-        Routes.SPLASH: (context) => SplashScreen(),
-        Routes.LOGIN: (context) => LoginScreen(),
-        Routes.REGISTER: (context) => RegisterScreen(),
-        Routes.USERS: (context) => UsersScreen(),
+      routes: RouteManager(context).routes(),
+      onGenerateRoute: (settings) {
+        RouteManager(context).handleRoutesWithParam(settings);
       },
     );
   }
