@@ -1,6 +1,6 @@
 # flutter_basic
 
-A flutter apllication with basic crud operations. 
+A flutter apllication with basic operations. 
 
 ## Getting Started
 
