@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_basic/local/helper.dart';
 import 'package:flutter_basic/utils/constants.dart';
+import 'package:flutter_basic/utils/routes.dart' as routes;
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -20,9 +21,9 @@ class SplashState extends State<SplashScreen> {
 
   void checkAuth(String token) {
     if (token.isEmpty) {
-      Navigator.of(context).pushNamed(Routes.LOGIN);
+      Navigator.of(context).pushNamed(routes.LOGIN);
     } else {
-      Navigator.of(context).pushNamed(Routes.USERS);
+      Navigator.of(context).pushNamed(routes.USERS);
     }
   }
 

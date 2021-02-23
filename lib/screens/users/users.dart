@@ -4,6 +4,7 @@ import 'package:flutter_basic/network/helper.dart';
 import 'package:flutter_basic/utils/constants.dart';
 import 'package:flutter_basic/utils/widgets.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import 'package:flutter_basic/utils/routes.dart' as routes;
 
 class UsersScreen extends StatefulWidget {
   @override
@@ -35,7 +36,7 @@ class UsersState extends State<UsersScreen> {
     User user = data as User;
     Navigator.pushNamed(
       context,
-      Routes.USER,
+      routes.USER,
       arguments: user,
     );
   }

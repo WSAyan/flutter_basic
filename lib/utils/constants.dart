@@ -28,10 +28,4 @@ class AppStrings {
   static const String TAKE_PHOTO = "Take photo";
 }
 
-class Routes {
-  static const String LOGIN = "_login";
-  static const String REGISTER = "_register";
-  static const String SPLASH = "_splash";
-  static const String USERS = "_users";
-  static const String USER = "_user";
-}
+

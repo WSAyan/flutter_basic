@@ -6,32 +6,35 @@ import 'package:flutter_basic/screens/splash.dart';
 import 'package:flutter_basic/screens/users/user.dart';
 import 'package:flutter_basic/screens/users/users.dart';
 
-import 'constants.dart';
+const String LOGIN = "_login";
+const String REGISTER = "_register";
+const String SPLASH = "_splash";
+const String USERS = "_users";
+const String USER = "_user";
 
 class RouteManager {
   RouteManager(BuildContext context);
 
   Map<String, WidgetBuilder> routes() => {
-        Routes.SPLASH: (context) => SplashScreen(),
-        Routes.LOGIN: (context) => LoginScreen(),
-        Routes.REGISTER: (context) => RegisterScreen(),
-        Routes.USERS: (context) => UsersScreen(),
-        Routes.USER: (context) => UserScreen(),
+        SPLASH: (context) => SplashScreen(),
+        LOGIN: (context) => LoginScreen(),
+        REGISTER: (context) => RegisterScreen(),
+        USERS: (context) => UsersScreen(),
+        USER: (context) => UserScreen(),
       };
 
-  MaterialPageRoute handleRoutesWithParam(RouteSettings settings){
+  MaterialPageRoute handleRoutesWithParam(RouteSettings settings) {
     MaterialPageRoute materialPageRoute;
     switch (settings.name) {
-      case Routes.USERS:
-      //materialPageRoute = makeRoute(SplashScreen());
+      case USERS:
         break;
-      case Routes.LOGIN:
+      case LOGIN:
         break;
-      case Routes.REGISTER:
+      case REGISTER:
         break;
-      case Routes.USERS:
+      case USERS:
         break;
-      case Routes.USER:
+      case USER:
         final User user = settings.arguments;
         materialPageRoute = makeRoute(UserScreen.fromUserScreen(user));
         break;

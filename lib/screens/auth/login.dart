@@ -4,6 +4,7 @@ import 'package:flutter_basic/local/helper.dart';
 import 'package:flutter_basic/network/helper.dart';
 import 'package:flutter_basic/utils/constants.dart';
 import 'package:flutter_basic/utils/widgets.dart';
+import 'package:flutter_basic/utils/routes.dart' as routes;
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -103,7 +104,7 @@ class LoginState extends State<LoginScreen> {
   }
 
   void onRegisterButtonClick() {
-    Navigator.of(context).pushNamed(Routes.REGISTER);
+    Navigator.of(context).pushNamed(routes.REGISTER);
   }
 
   void onDialogOKClick() {
@@ -134,6 +135,6 @@ class LoginState extends State<LoginScreen> {
 
     String authToken = loginResponse.token;
     SharedPrefHelper().setAuthToken(authToken);
-    Navigator.of(context).pushNamed(Routes.USERS);
+    Navigator.of(context).pushNamed(routes.USERS);
   }
 }

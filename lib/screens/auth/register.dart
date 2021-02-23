@@ -6,7 +6,7 @@ import 'package:flutter_basic/network/helper.dart';
 import 'package:flutter_basic/utils/constants.dart';
 import 'package:flutter_basic/utils/image_utils.dart';
 import 'package:flutter_basic/utils/widgets.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_basic/utils/routes.dart' as routes;
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -139,7 +139,7 @@ class RegisterState extends State<RegisterScreen> {
 
     CommonAppWidgets.showCommonToast(AppStrings.REGISTER_SUCCESSFUL);
 
-    Navigator.of(context).pushNamed(Routes.LOGIN);
+    Navigator.of(context).pushNamed(routes.LOGIN);
   }
 
   void onDialogOKClick() {
