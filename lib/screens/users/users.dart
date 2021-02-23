@@ -37,7 +37,7 @@ class UsersState extends State<UsersScreen> {
     Navigator.pushNamed(
       context,
       routes.USER,
-      arguments: user,
+      arguments: user.id,
     );
   }
 

@@ -35,8 +35,8 @@ class RouteManager {
       case USERS:
         break;
       case USER:
-        final User user = settings.arguments;
-        materialPageRoute = makeRoute(UserScreen.fromUserScreen(user));
+        final int userId = settings.arguments;
+        materialPageRoute = makeRoute(UserScreen.fromUserScreen(userId));
         break;
       default:
         materialPageRoute = null;

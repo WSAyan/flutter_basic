@@ -93,3 +93,27 @@ class Support {
     return data;
   }
 }
+
+class SingleUserResponse {
+  User data;
+  Support support;
+
+  SingleUserResponse({this.data, this.support});
+
+  SingleUserResponse.fromJson(Map<String, dynamic> json) {
+    data = json['data'] != null ? new User.fromJson(json['data']) : null;
+    support =
+    json['support'] != null ? new Support.fromJson(json['support']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.data != null) {
+      data['data'] = this.data.toJson();
+    }
+    if (this.support != null) {
+      data['support'] = this.support.toJson();
+    }
+    return data;
+  }
+}

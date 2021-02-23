@@ -8,10 +8,11 @@ const String BASE_URL = "https://reqres.in/";
 const String LOGIN = "api/login";
 const String REGISTER = "api/register";
 const String USERS = "api/users?page=";
+const String USER = "api/users/";
 
 class HttpRepository {
   Future<LoginResponse> login(String email, String password) async {
-    final response = await http.post("$BASE_URL$LOGIN",
+    final response = await http.post(makeUrl(LOGIN),
         body: Login(email: email, password: password).toJson());
 
     if (response.statusCode == 200) {
@@ -25,7 +26,7 @@ class HttpRepository {
   }
 
   Future<UsersResponse> fetchUsers(int page) async {
-    final response = await http.get("$BASE_URL$USERS$page");
+    final response = await http.get(makeUrl("$USERS$page"));
 
     if (response.statusCode == 200) {
       return UsersResponse.fromJson(jsonDecode(response.body));
@@ -35,7 +36,7 @@ class HttpRepository {
   }
 
   Future<RegisterResponse> register(String email, String password) async {
-    final response = await http.post("$BASE_URL$LOGIN",
+    final response = await http.post(makeUrl(REGISTER),
         body: Register(email: email, password: password).toJson());
 
     if (response.statusCode == 200) {
@@ -47,4 +48,16 @@ class HttpRepository {
       return null;
     }
   }
+
+  Future<SingleUserResponse> getSingleUser(int userId) async {
+    final response = await http.get(makeUrl("$USER$userId"));
+
+    if (response.statusCode == 200) {
+      return SingleUserResponse.fromJson(jsonDecode(response.body));
+    } else {
+      return null;
+    }
+  }
+
+  String makeUrl(String endpoint) => "$BASE_URL$endpoint";
 }
