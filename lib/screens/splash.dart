@@ -21,9 +21,9 @@ class SplashState extends State<SplashScreen> {
 
   void checkAuth(String token) {
     if (token.isEmpty) {
-      Navigator.of(context).pushNamed(routes.LOGIN);
+      Navigator.of(context).pushReplacementNamed(routes.LOGIN);
     } else {
-      Navigator.of(context).pushNamed(routes.USERS);
+      Navigator.of(context).pushReplacementNamed(routes.HOME);
     }
   }
 

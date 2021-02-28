@@ -134,7 +134,11 @@ class LoginState extends State<LoginScreen> {
     }
 
     String authToken = loginResponse.token;
+    login(authToken);
+  }
+
+  void login(String authToken) {
     SharedPrefHelper().setAuthToken(authToken);
-    Navigator.of(context).pushNamed(routes.USERS);
+    Navigator.of(context).pushReplacementNamed(routes.HOME);
   }
 }

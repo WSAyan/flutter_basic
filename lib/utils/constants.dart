@@ -4,7 +4,9 @@ class AppStrings {
   static const String LOGIN_SCREEN_TITLE = "Login";
   static const String USERS_SCREEN_TITLE = "Users";
   static const String USER_SCREEN_TITLE = "Profile";
+  static const String HOME_SCREEN_TITLE = "Home";
 
+  static const String LOGOUT_BUTTON = "Log out";
   static const String LOGIN_BUTTON = "Log In";
   static const String REGISTER_BUTTON = "Register";
 

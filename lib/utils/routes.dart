@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_basic/data/user.dart';
 import 'package:flutter_basic/screens/auth/login.dart';
 import 'package:flutter_basic/screens/auth/register.dart';
+import 'package:flutter_basic/screens/home/home.dart';
 import 'package:flutter_basic/screens/splash.dart';
 import 'package:flutter_basic/screens/users/user.dart';
 import 'package:flutter_basic/screens/users/users.dart';
@@ -11,6 +12,7 @@ const String REGISTER = "_register";
 const String SPLASH = "_splash";
 const String USERS = "_users";
 const String USER = "_user";
+const String HOME = "_home";
 
 class RouteManager {
   RouteManager(BuildContext context);
@@ -21,6 +23,7 @@ class RouteManager {
         REGISTER: (context) => RegisterScreen(),
         USERS: (context) => UsersScreen(),
         USER: (context) => UserScreen(),
+        HOME: (context) => HomeScreen()
       };
 
   MaterialPageRoute handleRoutesWithParam(RouteSettings settings) {
