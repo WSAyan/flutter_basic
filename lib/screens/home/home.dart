@@ -1,6 +1,6 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_basic/background/push_notification.dart';
 import 'package:flutter_basic/screens/home/drawer.dart';
 import 'package:flutter_basic/utils/constants.dart';
 
@@ -12,31 +12,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeState extends State<HomeScreen> {
-  String messageTitle = "Empty";
-  String notificationAlert = "alert";
-
-  FirebaseMessaging firebaseMessaging = FirebaseMessaging();
+  FCMHelper fcmHelper;
 
   @override
   void initState() {
     super.initState();
 
-    firebaseMessaging.configure(
-      onMessage: (message) async {
-        setState(() {
-          messageTitle = message["notification"]["title"];
-          notificationAlert = "New Notification Alert";
-        });
-      },
-      onResume: (message) async {
-        setState(() {
-          messageTitle = message["data"]["title"];
-          notificationAlert = "Application opened from Notification";
-        });
-      },
-    );
-
-    firebaseMessaging.requestNotificationPermissions();
+    fcmHelper = new FCMHelper(context);
+    fcmHelper.handlePushNotification();
   }
 
   @override
@@ -59,10 +42,10 @@ class HomeState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              notificationAlert,
+              "Welcome to",
             ),
             Text(
-              messageTitle,
+              "Neverland",
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
