@@ -96,14 +96,15 @@ class RegisterState extends State<RegisterScreen> {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppStrings.REGISTER_SCREEN_TITLE),
-      ),
-      body: Stack(children: [
-        Container(padding: const EdgeInsets.all(10.0), child: mainColumn),
-        isLoading ? progressLoader : Container()
-      ]),
-    );
+        appBar: AppBar(
+          title: Text(AppStrings.REGISTER_SCREEN_TITLE),
+        ),
+        body: SingleChildScrollView(
+          child: Stack(children: [
+            Container(padding: const EdgeInsets.all(10.0), child: mainColumn),
+            isLoading ? progressLoader : Container()
+          ]),
+        ));
   }
 
   void onRegisterButtonClick() {
