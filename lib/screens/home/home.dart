@@ -1,3 +1,5 @@
+import 'package:badges/badges.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_basic/background/push_notification.dart';
@@ -12,29 +14,38 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeState extends State<HomeScreen> {
-  FCMHelper fcmHelper;
+  FCMHelper fcmHelper = new FCMHelper();
+  int notificationCount = 0;
 
   @override
   void initState() {
     super.initState();
 
-    fcmHelper = new FCMHelper(context);
-    fcmHelper.handlePushNotification();
+    fcmHelper.handlePushNotification(onNewNotification);
   }
 
   @override
   Widget build(BuildContext context) {
+    IconButton notificationIcon = IconButton(
+      icon: Icon(
+        Icons.notifications,
+        color: Colors.white,
+      ),
+      onPressed: onNotificationIconPressed,
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Text(AppStrings.HOME_SCREEN_TITLE),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.notifications,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          )
+          notificationCount == 0
+              ? notificationIcon
+              : Badge(
+                  shape: BadgeShape.circle,
+                  position: BadgePosition.topEnd(top: 5, end: 0),
+                  badgeContent: Text(notificationCount.toString()),
+                  child: notificationIcon,
+                ),
         ],
       ),
       body: Center(
@@ -54,4 +65,12 @@ class HomeState extends State<HomeScreen> {
       drawer: SideNavDrawer(),
     );
   }
+
+  Future onNewNotification(Map<String, dynamic> onMessage) async {
+    setState(() {
+      notificationCount++;
+    });
+  }
+
+  void onNotificationIconPressed() {}
 }

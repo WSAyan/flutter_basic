@@ -8,18 +8,11 @@ class FCMHelper {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       new FlutterLocalNotificationsPlugin();
 
-  BuildContext context;
-
-  FCMHelper(BuildContext context) {
-    this.context = context;
-  }
-
-  void handlePushNotification() {
+  void handlePushNotification(void Function(Map<String, dynamic>) onNewNotification) {
     var initializationSettingsAndroid =
         new AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    var initializationSettingsIOS = new IOSInitializationSettings(
-        onDidReceiveLocalNotification: onDidReceiveLocalNotification);
+    var initializationSettingsIOS = new IOSInitializationSettings();
 
     var initializationSettings = new InitializationSettings(
         initializationSettingsAndroid, initializationSettingsIOS);
@@ -30,6 +23,7 @@ class FCMHelper {
     firebaseMessaging.configure(
       onMessage: (message) async {
         displayNotification(message);
+        onNewNotification(message);
       },
       onResume: (message) async {},
     );
@@ -66,26 +60,5 @@ class FCMHelper {
     if (payload != null) {
       debugPrint('notification payload: ' + payload);
     }
-  }
-
-  Future onDidReceiveLocalNotification(
-      int id, String title, String body, String payload) async {
-    // display a dialog with the notification details, tap ok to go to another page
-    showDialog(
-      context: context,
-      builder: (BuildContext context) => new CupertinoAlertDialog(
-        title: new Text(title),
-        content: new Text(body),
-        actions: [
-          CupertinoDialogAction(
-            isDefaultAction: true,
-            child: new Text('Ok'),
-            onPressed: () async {
-              Navigator.of(context, rootNavigator: true).pop();
-            },
-          ),
-        ],
-      ),
-    );
   }
 }
