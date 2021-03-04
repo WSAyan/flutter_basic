@@ -3,6 +3,7 @@ import 'package:flutter_basic/data/user.dart';
 import 'package:flutter_basic/screens/auth/login.dart';
 import 'package:flutter_basic/screens/auth/register.dart';
 import 'package:flutter_basic/screens/home/home.dart';
+import 'package:flutter_basic/screens/home/notifications.dart';
 import 'package:flutter_basic/screens/splash.dart';
 import 'package:flutter_basic/screens/users/user.dart';
 import 'package:flutter_basic/screens/users/users.dart';
@@ -13,6 +14,7 @@ const String SPLASH = "_splash";
 const String USERS = "_users";
 const String USER = "_user";
 const String HOME = "_home";
+const String NOTIFICATIONS = "_notifications";
 
 class RouteManager {
   RouteManager(BuildContext context);
@@ -23,7 +25,8 @@ class RouteManager {
         REGISTER: (context) => RegisterScreen(),
         USERS: (context) => UsersScreen(),
         USER: (context) => UserScreen(),
-        HOME: (context) => HomeScreen()
+        HOME: (context) => HomeScreen(),
+        NOTIFICATIONS: (context) => NotificationsScreen()
       };
 
   MaterialPageRoute handleRoutesWithParam(RouteSettings settings) {

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_basic/data/notification.dart';
 
 abstract class BaseDao<T> {
@@ -29,6 +31,7 @@ class NotificationDao implements BaseDao<NotificationData> {
     List<NotificationData> notifications = List<NotificationData>();
     for (Map map in query) {
       notifications.add(fromMap(map));
+
     }
     return notifications;
   }

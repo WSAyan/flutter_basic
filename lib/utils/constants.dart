@@ -5,6 +5,7 @@ class AppStrings {
   static const String USERS_SCREEN_TITLE = "Users";
   static const String USER_SCREEN_TITLE = "Profile";
   static const String HOME_SCREEN_TITLE = "Home";
+  static const String NOTIFICATIONS_SCREEN_TITLE = "Notifications";
 
   static const String LOGOUT_BUTTON = "Log out";
   static const String LOGIN_BUTTON = "Log In";

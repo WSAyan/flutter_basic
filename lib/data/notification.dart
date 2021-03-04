@@ -36,10 +36,9 @@ class NotificationData {
   }
 
   NotificationData.fromMap(Map<String, dynamic> map) {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    map['id'] = this.id;
-    map['title'] = this.title;
-    map['body'] = this.body;
-    map['isRead'] = this.isRead;
+    id = map['id'];
+    title = map['title'];
+    body = map['body'];
+    isRead = map['isRead'];
   }
 }

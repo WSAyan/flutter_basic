@@ -8,6 +8,7 @@ import 'package:flutter_basic/local/db_helper.dart';
 import 'package:flutter_basic/local/repository.dart';
 import 'package:flutter_basic/screens/home/drawer.dart';
 import 'package:flutter_basic/utils/constants.dart';
+import 'package:flutter_basic/utils/routes.dart' as routes;
 
 class HomeScreen extends StatefulWidget {
   HomeScreen();
@@ -86,6 +87,8 @@ class HomeState extends State<HomeScreen> {
     setState(() {
       notificationCount = 0;
     });
+
+    Navigator.of(context).pushNamed(routes.NOTIFICATIONS);
   }
 
   void saveNotification(String title, String body, bool isRead) {
