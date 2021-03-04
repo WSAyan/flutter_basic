@@ -1,5 +1,5 @@
 class AppStrings {
-  static const String APP_NAME = "B.S.I.C";
+  static const String APP_NAME = "B.A.S.I.C";
   static const String REGISTER_SCREEN_TITLE = "Register";
   static const String LOGIN_SCREEN_TITLE = "Login";
   static const String USERS_SCREEN_TITLE = "Users";
@@ -24,11 +24,11 @@ class AppStrings {
       "Something went wrong! Please try again.";
 
   static const String REGISTER_SUCCESSFUL = "Registration successful";
+  static const String NOTIFICATION_DELETED = "Notification deleted";
 
   static const String DIALOG_TITLE_ADD_PHOTO = "Add photo";
-  static const String DIALOG_SUB_TITLE_ADD_PHOTO = "Please take a photo or pick one from gallery.";
+  static const String DIALOG_SUB_TITLE_ADD_PHOTO =
+      "Please take a photo or pick one from gallery.";
   static const String OPEN_GALLERY = "Open gallery";
   static const String TAKE_PHOTO = "Take photo";
 }
-
-

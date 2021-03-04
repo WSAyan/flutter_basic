@@ -84,8 +84,8 @@ class NotificationsState extends State<NotificationsScreen> {
   }
 
   void onDeleteClick(NotificationData notificationData) {
-    notificationRepository.delete(notificationData).then(
-        (value) => CommonAppWidgets.showCommonToast("Notification deleted"));
+    notificationRepository.delete(notificationData).then((value) =>
+        CommonAppWidgets.showCommonToast(AppStrings.NOTIFICATION_DELETED));
 
     setState(() {
       futureNotifications = notificationRepository.getNotifications();
