@@ -4,7 +4,21 @@ A flutter apllication with basic operations.
 
 ## Getting Started
 
-Log in:
+
+Install packages with the following command:
+
+```shell
+flutter pub get
+```
+
+Run the app with the following command:
+
+```shell
+flutter run
+```
+
+
+Use following credential to login:
 
 **email:** eve.holt@reqres.in
 
