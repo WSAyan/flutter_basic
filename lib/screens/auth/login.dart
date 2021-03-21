@@ -123,13 +123,15 @@ class LoginState extends State<LoginScreen> {
     if (loginResponse == null) {
       showDialog(
           context: context,
-          child: CommonAppWidgets.makeCommonAlertDialog(
-              AppStrings.DIALOG_TITLE_ERROR,
-              AppStrings.COMMON_ERROR_MESSAGE,
-              CommonAppWidgets.makeCommonButton(AppStrings.DIALOG_CANCEL,
-                  Colors.lightBlueAccent, Colors.white, onDialogCancelClick),
-              CommonAppWidgets.makeCommonButton(AppStrings.DIALOG_OK,
-                  Colors.lightBlueAccent, Colors.white, onDialogOKClick)));
+          builder: (BuildContext context) {
+            return CommonAppWidgets.makeCommonAlertDialog(
+                AppStrings.DIALOG_TITLE_ERROR,
+                AppStrings.COMMON_ERROR_MESSAGE,
+                CommonAppWidgets.makeCommonButton(AppStrings.DIALOG_CANCEL,
+                    Colors.lightBlueAccent, Colors.white, onDialogCancelClick),
+                CommonAppWidgets.makeCommonButton(AppStrings.DIALOG_OK,
+                    Colors.lightBlueAccent, Colors.white, onDialogOKClick));
+          });
       return;
     }
 

@@ -128,13 +128,15 @@ class RegisterState extends State<RegisterScreen> {
     if (registerResponse == null) {
       showDialog(
           context: context,
-          child: CommonAppWidgets.makeCommonAlertDialog(
-              AppStrings.DIALOG_TITLE_ERROR,
-              AppStrings.COMMON_ERROR_MESSAGE,
-              CommonAppWidgets.makeCommonButton(AppStrings.DIALOG_CANCEL,
-                  Colors.lightBlueAccent, Colors.white, onDialogCancelClick),
-              CommonAppWidgets.makeCommonButton(AppStrings.DIALOG_OK,
-                  Colors.lightBlueAccent, Colors.white, onDialogOKClick)));
+          builder: (BuildContext context) {
+            return CommonAppWidgets.makeCommonAlertDialog(
+                AppStrings.DIALOG_TITLE_ERROR,
+                AppStrings.COMMON_ERROR_MESSAGE,
+                CommonAppWidgets.makeCommonButton(AppStrings.DIALOG_CANCEL,
+                    Colors.lightBlueAccent, Colors.white, onDialogCancelClick),
+                CommonAppWidgets.makeCommonButton(AppStrings.DIALOG_OK,
+                    Colors.lightBlueAccent, Colors.white, onDialogOKClick));
+          });
       return;
     }
 
@@ -154,13 +156,15 @@ class RegisterState extends State<RegisterScreen> {
   void onAddPhotoClick() {
     showDialog(
         context: context,
-        child: CommonAppWidgets.makeCommonAlertDialog(
-            AppStrings.DIALOG_TITLE_ADD_PHOTO,
-            AppStrings.DIALOG_SUB_TITLE_ADD_PHOTO,
-            CommonAppWidgets.makeCommonButton(AppStrings.OPEN_GALLERY,
-                Colors.lightBlueAccent, Colors.white, onOpenGalleryClick),
-            CommonAppWidgets.makeCommonButton(AppStrings.TAKE_PHOTO,
-                Colors.lightBlueAccent, Colors.white, onTakePhotoClick)));
+        builder: (BuildContext context) {
+          return CommonAppWidgets.makeCommonAlertDialog(
+              AppStrings.DIALOG_TITLE_ADD_PHOTO,
+              AppStrings.DIALOG_SUB_TITLE_ADD_PHOTO,
+              CommonAppWidgets.makeCommonButton(AppStrings.OPEN_GALLERY,
+                  Colors.lightBlueAccent, Colors.white, onOpenGalleryClick),
+              CommonAppWidgets.makeCommonButton(AppStrings.TAKE_PHOTO,
+                  Colors.lightBlueAccent, Colors.white, onTakePhotoClick));
+        });
   }
 
   void onOpenGalleryClick() {
