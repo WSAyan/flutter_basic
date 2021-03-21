@@ -6,6 +6,7 @@ class AppStrings {
   static const String USER_SCREEN_TITLE = "Profile";
   static const String HOME_SCREEN_TITLE = "Home";
   static const String NOTIFICATIONS_SCREEN_TITLE = "Notifications";
+  static const String SHARE = "Share";
 
   static const String LOGOUT_BUTTON = "Log out";
   static const String LOGIN_BUTTON = "Log In";
@@ -22,6 +23,10 @@ class AppStrings {
 
   static const String COMMON_ERROR_MESSAGE =
       "Something went wrong! Please try again.";
+
+  static const String OPTIMUS_PRIME_MESSAGE =
+      "Freedom is the right of all sentient beings";
+  static const String SHARE_SUBJECT = "Sharing for no reason";
 
   static const String REGISTER_SUCCESSFUL = "Registration successful";
   static const String NOTIFICATION_DELETED = "Notification deleted";

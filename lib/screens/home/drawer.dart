@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_basic/local/pref_helper.dart';
 import 'package:flutter_basic/utils/constants.dart';
 import 'package:flutter_basic/utils/routes.dart' as routes;
+import 'package:share/share.dart';
 
 class SideNavDrawer extends StatelessWidget {
   BuildContext context;
@@ -34,6 +35,13 @@ class SideNavDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: Icon(Icons.share),
+            title: Text(AppStrings.SHARE),
+            onTap: () {
+              onShare(context);
+            },
+          ),
+          ListTile(
             leading: Icon(Icons.logout),
             title: Text(AppStrings.LOGOUT_BUTTON),
             onTap: logout,
@@ -46,5 +54,13 @@ class SideNavDrawer extends StatelessWidget {
   void logout() {
     SharedPrefHelper().destroy();
     Navigator.of(context).pushReplacementNamed(routes.LOGIN);
+  }
+
+  onShare(BuildContext context) async {
+    final RenderBox box = context.findRenderObject() as RenderBox;
+
+    await Share.share(AppStrings.OPTIMUS_PRIME_MESSAGE,
+        subject: AppStrings.SHARE_SUBJECT,
+        sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
   }
 }
